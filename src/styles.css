@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Below import statement is for angular material theme, it is needed for using material components */
+@import "~@angular/material/prebuilt-themes/purple-green.css"; 
+
+
+.mat-tooltip{
+    border:1px solid silver;
+    font-family: cursive;
+    font-size: 14px;
+    color:#dc3545 !important;
+    background :black !important;
+}
+
+.primary-color{
+    color :#dc3545;
+}

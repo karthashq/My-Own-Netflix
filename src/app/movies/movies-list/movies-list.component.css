@@ -1,0 +1,9 @@
+*{
+    background-color: black;
+}
+
+.nav-icon{
+    position: fixed;
+    padding: 50vh 0;
+    padding-left:2%;
+}

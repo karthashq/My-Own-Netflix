@@ -1,0 +1,8 @@
+<div class="movie-card">
+    <p class="movie-title" mat-raised-button matTooltip="{{movieDetails.title}}">{{movieDetails.title | charLimiter}}
+        <span class="movie-year">({{movieDetails.year}})</span></p>
+
+    <figure appPosterHover style="position: relative;margin-bottom:0;" genres="{{movieDetails.genres}}" rating="{{movieDetails.imdb.rating}}">
+        <img src="{{movieDetails.poster | checkPoster}}" alt="{{movieDetails.title}}">
+    </figure>
+</div>

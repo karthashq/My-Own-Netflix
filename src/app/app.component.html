@@ -1,0 +1,6 @@
+<app-header (PageChange)=changePage($event)>Header Loading...</app-header>
+<!-- <div class="container-fluid"> -->
+    <app-home *ngIf="currentPage === 'home'"></app-home>
+    <app-movies *ngIf="currentPage === 'movies'"></app-movies>
+    <app-tvseries *ngIf="currentPage === 'tvseries'"></app-tvseries>
+<!-- </div> -->

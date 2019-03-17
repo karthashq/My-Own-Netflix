@@ -1,0 +1,1 @@
+1. use cors library to allow specific domains from accessing the request 
