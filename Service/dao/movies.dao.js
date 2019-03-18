@@ -18,7 +18,7 @@ mongoClient.connect(conectionURI,{ useNewUrlParser: true })
 
 
 moviesDAO.getMovies = async (start, end) => {
-    let movies = await moviesCollection.find({"year": {$gt : 2010},"poster" : {$nin : [undefined,null,""]} }).skip(start).limit(end-start).toArray();;
+    let movies = await moviesCollection.find({"year": {$gt : 2010},"poster" : {$nin : [undefined,null,""]} }).sort({year : -1}).skip(start).limit(end-start).toArray();;
     return movies
 };
 

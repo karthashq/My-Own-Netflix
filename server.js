@@ -11,7 +11,6 @@ let port = process.env.PORT || 5000;
 // 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 // 	next();
 // });
-    // "postinstall": "ng build --output-path dist"
 var corsOptions = {
 	origin: 'http://localhost:4200',
 	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 

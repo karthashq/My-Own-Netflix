@@ -9,7 +9,7 @@ import { TvseriesComponent } from './tvseries/tvseries.component';
 import { MoviesListComponent } from './movies/movies-list/movies-list.component';
 import { TvseriesListComponent } from './tvseries/tvseries-list/tvseries-list.component';
 import { HomeComponent } from './home/home.component';
-import { MovieComponent } from './movies/movies-list/movie/movie.component';
+import { MovieComponent } from './movies/movie/movie.component';
 import { SeriesComponent } from './tvseries/tvseries-list/series/series.component';
 import { MainService } from './app.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
