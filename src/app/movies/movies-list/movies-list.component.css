@@ -2,36 +2,41 @@
     background-color: black;
 }
 
-.nav-icon{
-    position: fixed;
-    padding: 50vh 0;
-    padding-left:2%;
-}
-
 div.movie-card{
     background-color: black;
     color:silver;
-    margin-bottom: 7.5%;
-    margin-top: 7.5%;
-    width: 206px;
-    height: 270px;
+    margin-bottom:5vh;
 }
 
-div.movie-card img {
+div.movie-card img ,div.movie-card figure,div.movie-card figcaption{
     width: 200px;
     height: 250px;
     cursor: pointer;
     padding:0;
     margin: 0;
+    display:inline-block;
+    box-sizing: content-box;
 }
 .movie-title {
 margin: 0;
 padding: 0;
+margin-bottom: 5px;
 font-family: cursive;
-height: 26px;
-font-size: 15px;
 }
 
 .movie-year{
     font-size: smaller;
+}
+
+@media only screen and (max-width: 500px){
+    div.movie-card img,div.movie-card figure,div.movie-card figcaption{
+        width:100px;
+        height: 150px;
+    }
+}
+@media only screen and (max-width: 768px){
+    div.movie-card img,div.movie-card figure,div.movie-card figcaption{
+        width:170px;
+        height: 220px;
+    }
 }

@@ -18,9 +18,12 @@ export class PosterHoverDirective implements OnInit {
 
         this.imageElement = this.elementRef.nativeElement.firstElementChild;
         this.renderer.setStyle(this.elementRef.nativeElement, 'cursor', 'pointer');
+        this.renderer.setStyle(this.elementRef.nativeElement, 'position', 'relative');
+        this.renderer.setStyle(this.info, 'padding-top', '50%');
         this.renderer.setStyle(this.info, 'position', 'absolute');
-        this.renderer.setStyle(this.info, 'top', '40%');
-        this.renderer.setStyle(this.info, 'left', '10%');
+        this.renderer.setStyle(this.info, 'background', 'transparent');
+        this.renderer.setStyle(this.info, 'left', '0');
+        this.renderer.setStyle(this.info, 'bottom', -`${this.elementRef.nativeElement.height}`);
         this.renderer.setStyle(this.info, 'visibility', 'hidden');
         this.renderer.appendChild(this.elementRef.nativeElement, this.info);
     }
@@ -38,14 +41,14 @@ export class PosterHoverDirective implements OnInit {
 
     @HostListener('mouseenter') showInfo(event) {
         this.renderer.setStyle(this.imageElement, 'opacity', 0.1);
-        this.renderer.setStyle(this.elementRef.nativeElement, 'border', '4px solid #de1e30');
-        this.renderer.setStyle(this.elementRef.nativeElement, 'border-radius', '3px');
+        this.renderer.setStyle(this.imageElement.parentNode, 'border', '4px solid #de1e30');
+        this.renderer.setStyle(this.imageElement.parentNode, 'border-radius', '3px');
         this.renderer.setStyle(this.info, 'visibility', 'visible');
     }
 
     @HostListener('mouseleave') hideInfo(event) {
         this.renderer.setStyle(this.imageElement, 'opacity', 1);
-        this.renderer.setStyle(this.elementRef.nativeElement, 'border', 'none');
+        this.renderer.setStyle(this.imageElement.parentNode, 'border', 'none');
         this.renderer.setStyle(this.info, 'visibility', 'hidden');
     }
 

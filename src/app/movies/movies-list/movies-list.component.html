@@ -1,28 +1,17 @@
-<div style="position:absolute" class="container-fluid">
+<div style="" class="container-fluid">
     <div class="row">
-        <div class="col-md-1" style="text-align: center">
-            <div class="nav-icon">
-                <img *ngIf="start!== 0" style="cursor:pointer" (click)="showPrvPage()" src="../../../assets/arrow-back-silver.svg">
-                <img *ngIf="start=== 0" style="cursor:pointer" src="../../../assets/arrow-back-grey.svg">
-            </div>
-        </div>
-        <div class="col-md-10">
-            <div class="row">
-                <div *ngFor="let movieDetails of moviesList" class="col-md-3">
-                    <div class="movie-card">
-                        <p class="movie-title" mat-raised-button matTooltip="{{movieDetails.title}}">{{movieDetails.title | charLimiter}}
-                            <span class="movie-year">({{movieDetails.year}})</span></p>
-                    
-                        <figure appPosterHover style="position: relative;margin-bottom:0;" genres="{{movieDetails.genres}}" rating="{{movieDetails.imdb.rating}}">
-                            <img src="{{movieDetails.poster | checkPoster}}" alt="{{movieDetails.title}}">
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-1" style="text-align: center">
-            <div class="nav-icon">
-                <img style="cursor:pointer" (click)="showNextPage()" src="../../../assets/arrow-next-silver.svg">
+        <div *ngFor="let movieDetails of moviesList" style="text-align:center;" class="col-md-3 col-sm-6 col-6">
+            <div class="movie-card">
+
+                <p class="movie-title" mat-raised-button matTooltip="{{movieDetails.title}}">{{movieDetails.title |
+                    charLimiter}}
+                    <span class="movie-year">({{movieDetails.year}})</span>
+                </p>
+
+                <figure appPosterHover genres="{{movieDetails.genres}}" rating="{{movieDetails.imdb.rating}}">
+                    <img src="{{movieDetails.poster | checkPoster}}" alt="{{movieDetails.title}}">
+                </figure>
+
             </div>
         </div>
     </div>
