@@ -36,7 +36,8 @@ export class PosterHoverDirective implements OnInit {
         } else {
             rating = `<strong class="primary-color">Rating</strong> : Unavailable`;
         }
-        return rating + genres;
+        const viewButton = `<br><button class="btn btn-dark">View</button>`;
+        return rating + genres + viewButton;
     }
 
     @HostListener('mouseenter') showInfo(event) {
