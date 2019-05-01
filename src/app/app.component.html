@@ -1,6 +1,5 @@
 <app-header (PageChange)=changePage($event)>Header Loading...</app-header>
+
 <div style="padding-top:56px;height:100%;width:100%;">
-    <app-home *ngIf="currentPage === 'home'"></app-home>
-    <app-movies-list *ngIf="currentPage === 'movies'"></app-movies-list>
-    <app-tvseries *ngIf="currentPage === 'tvseries'"></app-tvseries>
+    <router-outlet></router-outlet>
 </div>
