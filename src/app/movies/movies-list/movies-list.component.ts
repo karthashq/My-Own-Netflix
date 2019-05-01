@@ -1,47 +1,72 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MainService } from 'src/app/app.service';
-
+import { Subject, BehaviorSubject, Observable } from 'rxjs';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { map, tap, scan, mergeMap, throttleTime } from 'rxjs/operators';
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
   styleUrls: ['./movies-list.component.css']
 })
-export class MoviesListComponent implements OnInit {
-  @Input() moviesList;
-  loader  = false;
+export class MoviesListComponent {
+  @ViewChild(CdkVirtualScrollViewport) viewport: CdkVirtualScrollViewport;
   start = 0;
   end = 20;
-  constructor(private mainService: MainService) { }
-
-  ngOnInit() {
+  theEnd = false;
+  loadingNextBatch = false;
+  offset = new BehaviorSubject(null);
+  infinite: Observable<any[]>;
+  constructor(private mainService: MainService) {
+    const batchMap = this.offset.pipe(
+      throttleTime(500),
+      mergeMap(n => this.getBatch(n)),
+      scan((acc, batch) => {
+        return { ...acc, ...batch };
+      }, {})
+    );
+    this.infinite = batchMap.pipe(map((v) => {this.loadingNextBatch = false; return Object.values(v); }));
   }
 
   movieRequestTemplate() {
     const template = {
       'start': this.start,
-      'end': this.end
+      'end': this.start + 20
     };
     return template;
   }
-  showPrvPage() {
-    if (this.start !== 0) {
-      this.start = this.start - 20;
-      this.end = this.end - 20;
-    }
-    this.loader = true;
-    this.mainService.getDataforMovies(this.movieRequestTemplate()).subscribe(moviesList => {
-      this.moviesList = moviesList.movies;
-      this.loader = false;
-    });
+
+  getBatch(offset) {
+    console.log(offset);
+    return this.mainService.getDataforMovies(this.movieRequestTemplate())
+      .pipe(
+        tap(arr => (arr.movies.length ? null : (this.theEnd = true))),
+        map(response => {
+          const arr = response.movies;
+          return arr.reduce((acc, cur) => {
+            const id = cur._id;
+            const data = cur;
+            return { ...acc, [id]: data };
+          }, {});
+        })
+      );
   }
 
-  showNextPage() {
-    this.start = this.start + 20;
-    this.end = this.end + 20;
-    this.loader = true;
-    this.mainService.getDataforMovies(this.movieRequestTemplate()).subscribe(moviesList => {
-      this.moviesList = moviesList.movies;
-      this.loader = false;
-    });
+  nextBatch(e) {
+    if (this.theEnd) {
+      return;
+    }
+
+    const end = this.viewport.getRenderedRange().end;
+    const total = this.viewport.getDataLength();
+    console.log(`${end}, '>=', ${total}`);
+    if (end === total) {
+      this.start = end;
+      this.loadingNextBatch = true;
+      this.offset.next(null);
+    }
+  }
+
+  trackByIdx(i) {
+    return i;
   }
 }

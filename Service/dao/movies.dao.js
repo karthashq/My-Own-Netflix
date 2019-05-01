@@ -17,8 +17,13 @@ mongoClient.connect(conectionURI,{ useNewUrlParser: true })
   })
 
 
-moviesDAO.getMovies = async (start, end) => {
-    let movies = await moviesCollection.find({"year": {$gt : 2010},"poster" : {$nin : [undefined,null,""]} }).sort({year : -1}).skip(start).limit(end-start).toArray();;
+moviesDAO.getMovies = async (start) => {
+    let movies = await moviesCollection
+                              .find({"year": {$gt : 2010},"poster" : {$nin : [undefined,null,""]} })
+                              .sort({year : -1})
+                              .skip(start)
+                              .limit(20)
+                              .toArray();;
     return movies
 };
 

@@ -6,14 +6,22 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentPage: string ;
+  currentPage: string = 'home';
   @Output() PageChange = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
   }
 
+  checkActive(option) {
+    if (this.currentPage === option) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   changePage(page) {
     this.PageChange.emit(page);
+    this.currentPage = page;
   }
 }

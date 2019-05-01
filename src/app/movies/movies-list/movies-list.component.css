@@ -1,11 +1,24 @@
 *{
     background-color: black;
+    color: silver;
+}
+
+
+cdk-virtual-scroll-viewport{
+    height: 88%;;
+}
+
+.virtual-scroll-grid{
+    display:grid;
+    grid-template-columns:auto auto auto auto;
 }
 
 div.movie-card{
     background-color: black;
     color:silver;
     margin-bottom:5vh;
+    text-align: center;
+    height:280px;
 }
 
 div.movie-card img ,div.movie-card figure,div.movie-card figcaption{
@@ -28,15 +41,26 @@ font-family: cursive;
     font-size: smaller;
 }
 
-@media only screen and (max-width: 500px){
-    div.movie-card img,div.movie-card figure,div.movie-card figcaption{
-        width:100px;
-        height: 150px;
-    }
-}
 @media only screen and (max-width: 768px){
     div.movie-card img,div.movie-card figure,div.movie-card figcaption{
         width:170px;
         height: 220px;
     }
+    .virtual-scroll-grid{
+        display:grid;
+        grid-template-columns:auto auto auto;
+    }
+}
+@media only screen and (max-width: 500px){
+    div.movie-card img,div.movie-card figure,div.movie-card figcaption{
+        width:170px;
+        height: 220px;
+    }
+    .virtual-scroll-grid{
+        display:grid;
+        grid-template-columns:auto auto;
+    }
+    /* figure{
+        font-size:.5em;
+    } */
 }

@@ -3,7 +3,6 @@
 /* Below import statement is for angular material theme, it is needed for using material components */
 @import "~@angular/material/prebuilt-themes/purple-green.css"; 
 
-
 .mat-tooltip{
     border:1px solid silver;
     font-family: cursive;
@@ -15,3 +14,12 @@
 .primary-color{
     color :#dc3545;
 }
+.nav-link,.nav-item{
+    cursor:pointer;
+}
+
+html, body { height: 100%;width:100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-movies-list{height:100%;width:100%}
+

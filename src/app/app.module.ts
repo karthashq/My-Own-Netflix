@@ -13,7 +13,8 @@ import { MovieComponent } from './movies/movie/movie.component';
 import { SeriesComponent } from './tvseries/tvseries-list/series/series.component';
 import { MainService } from './app.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatButtonModule } from '@angular/material/';
+import { MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule } from '@angular/material/';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PosterHoverDirective } from 'src/custom-directives/poster-hover.directive';
 import { ValidImageCheck } from 'src/custom-pipes/poster-image.pipe';
@@ -39,7 +40,8 @@ import { CharacterLimiter } from 'src/custom-pipes/character-limiter.pipe';
 
   ],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MatTooltipModule ,MatButtonModule
+    BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MatTooltipModule, MatButtonModule, MatExpansionModule
+    , MatFormFieldModule, MatInputModule, ScrollingModule
   ],
   providers: [MainService],
   bootstrap: [AppComponent]
