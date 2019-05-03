@@ -29,6 +29,11 @@ app.use(moviesRoute);
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', {root:distDir});
+});
+
 app.listen(port,function(){
     console.log("App listening on port ",port);
 });
