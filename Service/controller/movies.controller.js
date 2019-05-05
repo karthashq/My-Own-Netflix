@@ -25,6 +25,10 @@ moviesController.getMovieComments = async (req, res) => {
 moviesController.getMovie = async (req,res) =>{
 	let movieId  = req.params.id;
 	let movieDetails = await moviesDAO.getMovie(movieId);
+	let query = `${movieDetails.title} ${movieDetails.year}`;
+	let youtubeTrailerId = await moviesDAO.getYoutubeId(query);
+	console.log(youtubeTrailerId);
+	movieDetails.videoId = youtubeTrailerId;
 	res.json(movieDetails);
 	res.end();
 };

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MainService } from 'src/app/app.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie',
@@ -12,7 +13,8 @@ export class MovieComponent {
   movieComments: any = [];
   movieDetails: any;
   loading = true;
-  constructor(private route: ActivatedRoute, private mainService: MainService) {
+  trailerLink: any = '';
+  constructor(private route: ActivatedRoute, private mainService: MainService,private domSanitizer: DomSanitizer) {
     this.route.params.subscribe((param) => {
       this.movieId = param.movieId;
       this.getMovieDetails();
@@ -22,7 +24,7 @@ export class MovieComponent {
   getMovieDetails() {
     this.mainService.getDetailsforMovieId(this.movieId).subscribe(response => {
       this.movieDetails = response;
-      console.log(this.movieDetails);
+      this.trailerLink = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.movieDetails.videoId);
       this.loading = false;
     });
     // to get movie comments

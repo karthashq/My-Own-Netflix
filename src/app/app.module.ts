@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PosterHoverDirective } from 'src/custom-directives/poster-hover.directive';
 import { ValidImageCheck } from 'src/custom-pipes/poster-image.pipe';
 import { CharacterLimiter } from 'src/custom-pipes/character-limiter.pipe';
+import { SafeURLPipe } from 'src/custom-pipes/safe-url.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { CharacterLimiter } from 'src/custom-pipes/character-limiter.pipe';
 
     // Pipes
     ValidImageCheck,
-    CharacterLimiter
+    CharacterLimiter,
+    SafeURLPipe
 
   ],
   imports: [
