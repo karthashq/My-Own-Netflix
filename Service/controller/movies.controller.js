@@ -25,9 +25,7 @@ moviesController.getMovieComments = async (req, res) => {
 moviesController.getMovie = async (req,res) =>{
 	let movieId  = req.params.id;
 	let movieDetails = await moviesDAO.getMovie(movieId);
-	res.json({
-		"movieDetails" :movieDetails
-	});
+	res.json(movieDetails);
 	res.end();
 };
 module.exports = moviesController;

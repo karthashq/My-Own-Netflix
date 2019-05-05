@@ -21,9 +21,9 @@ export class MovieComponent {
 
   getMovieDetails() {
     this.mainService.getDetailsforMovieId(this.movieId).subscribe(response => {
-      this.movieDetails = response.movieDetails;
+      this.movieDetails = response;
       console.log(this.movieDetails);
-      // this.loading = false;
+      this.loading = false;
     });
     // to get movie comments
     this.mainService.getMovieComments(this.movieId).subscribe(response => {
