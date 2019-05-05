@@ -2,3 +2,4 @@ My Own Netflix - Shortcut.lnk
 .vscode/settings.json
 node_modules/
 dist/
+.vscode/launch.json
