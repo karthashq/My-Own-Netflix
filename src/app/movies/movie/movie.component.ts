@@ -14,7 +14,7 @@ export class MovieComponent {
   movieDetails: any;
   loading = true;
   trailerLink: any = '';
-  constructor(private route: ActivatedRoute, private mainService: MainService,private domSanitizer: DomSanitizer) {
+  constructor(private route: ActivatedRoute, private mainService: MainService, private domSanitizer: DomSanitizer) {
     this.route.params.subscribe((param) => {
       this.movieId = param.movieId;
       this.getMovieDetails();
