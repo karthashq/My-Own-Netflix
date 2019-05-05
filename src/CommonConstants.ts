@@ -1,4 +1,6 @@
 export const CommonConstants = {
     testConnection: './testing',
-    getMovieURL: './getMovies'
+    getMovieURL: './getMovies',
+    getDetailsforMovieId: './getMovie',
+    getCommentsforMovie: './getMovieComments'
 };

@@ -1,3 +1,51 @@
 <!-- Template for Movie Details Page -->
-<div class="container-fluid">
+<div *ngIf="!loading" class="container-fluid">
+    <div class="row" style="padding-top:20px;background-color: black;">
+        <div class="col-md-3 col-sm-12 col-xl-3" style="text-align:center;">
+            <img id="movie-image" src="{{movieDetails.poster | checkPoster}}" alt="{{movieDetails.title}}" />
+        </div>
+        <div class="col-md-5 col-sm-12 col-xl-5">
+            <section id="details">
+                <h2>{{movieDetails.title}}<small> ({{movieDetails.year}})</small></h2>
+                <div class="genres">
+                    {{movieDetails.genres.join(" / ")}}
+                </div>
+                <br>
+                <div class="ratings row">
+                    <div class="col-md-4 col-4"><span class="imdb"></span></div>
+                    <div class="col-md-4 col-4"><span class="tomatoes"></span></div>
+                    <div class="col-md-4 col-4"><span class="tomatoes"></span></div>
+                </div>
+                <p>
+                    {{movieDetails.fullplot}}
+                </p>
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-2 col-2 col-xs-2 detailName">Cast</div>
+                        <div class="col-md-10 col-10 col-xs-10 detail">{{movieDetails.cast.join(" , ")}}</div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-2 col-2 col-xs-2 detailName">Writers</div>
+                        <div class="col-md-10 col-10 col-xs-10 detail">{{movieDetails.writers.join(" , ")}}</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xl-5">Similar Movies, feature coming soon</div>
+    </div>
+</div>
+
+<div class="loader-container" *ngIf="loading">
+    <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 </div>

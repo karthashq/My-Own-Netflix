@@ -1,17 +1,20 @@
-<h3>Movies</h3>
+<h3 style="margin:0;">Movies</h3>
 <div class="filterCriteria">
 </div>
 
 <ng-container *ngIf="infinite | async as moviesList">
-    <cdk-virtual-scroll-viewport itemSize="100" (scrolledIndexChange)="nextBatch($event);" minBufferPx="500" maxBufferPx="1000">
+    <cdk-virtual-scroll-viewport itemSize="100" (scrolledIndexChange)="nextBatch($event);" minBufferPx="500"
+        maxBufferPx="1000" style="background-color: black">
         <div class="virtual-scroll-grid">
             <div *cdkVirtualFor="let movieDetails of infinite;let i=index;trackBy:trackByIdx">
                 <div class="movie-card">
-                    <p class="movie-title" mat-raised-button matTooltip="{{movieDetails.title}}">{{movieDetails.title | charLimiter}}
+                    <p class="movie-title" mat-raised-button matTooltip="{{movieDetails.title}}">
+                        {{movieDetails.title | charLimiter}}
                         <span class="movie-year">({{movieDetails.year}})</span>
                     </p>
 
-                    <figure appPosterHover genres="{{movieDetails.genres}}" rating="{{movieDetails.imdb.rating}}">
+                    <figure (click)="showMovieDetails($event,movieDetails)" appPosterHover
+                        genres="{{movieDetails.genres}}" rating="{{movieDetails.imdb.rating}}">
                         <img src="{{movieDetails.poster | checkPoster}}" alt="{{movieDetails.title}}">
                     </figure>
                 </div>
@@ -20,9 +23,16 @@
     </cdk-virtual-scroll-viewport>
 </ng-container>
 <div *ngIf="loadingNextBatch">
-    Breathe In ..Breathe Out..More Movies  loading....
+    Breathe In ..Breathe Out..More Movies loading....
 </div>
 
-<div *ngIf="loadingNextBatch" class="loader-body">
-    <div class="loader"></div>
+<div *ngIf="loadingNextBatch" class="lds-roller">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
 </div>

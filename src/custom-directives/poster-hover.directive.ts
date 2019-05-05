@@ -1,5 +1,6 @@
 import { Directive, ElementRef, Renderer2, OnInit, HostListener, Input } from '@angular/core';
 import { wrapListenerWithPreventDefault } from '@angular/core/src/render3/instructions';
+import { ActivatedRoute } from '@angular/router';
 
 @Directive({
     selector: '[appPosterHover]'
@@ -10,7 +11,7 @@ export class PosterHoverDirective implements OnInit {
     posterInner: string;
     info: HTMLElement;
     imageElement: any;
-    constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+    constructor(private elementRef: ElementRef, private renderer: Renderer2,private activatedRoute: ActivatedRoute) { }
     ngOnInit() {
         this.info = this.renderer.createElement('figcaption');
         this.posterInner = this.generatePosterinfo();
@@ -36,7 +37,7 @@ export class PosterHoverDirective implements OnInit {
         } else {
             rating = `<strong class="primary-color">Rating</strong> : Unavailable`;
         }
-        const viewButton = `<br><button class="btn btn-dark">View</button>`;
+        const viewButton = `<br><button class="openMovie btn btn-dark">View</button>`;
         return rating + genres + viewButton;
     }
 

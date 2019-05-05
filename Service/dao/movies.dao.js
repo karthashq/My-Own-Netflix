@@ -27,4 +27,14 @@ moviesDAO.getMovies = async (start) => {
     return movies
 };
 
+moviesDAO.getCommentsforMovie = async (id) =>{
+  let comments = await connection.db("mflix").collection("comments")
+                              .find({"movie_id": mongodb.ObjectID(id)})
+                              .toArray();
+  return comments;
+}
+moviesDAO.getMovie = async (id) =>{
+  let movies = await connection.db("mflix").collection("movies").find({"_id": mongodb.ObjectID(id)}).toArray();
+  return movies[0];
+}
 module.exports = moviesDAO;

@@ -3,6 +3,7 @@ import { MainService } from 'src/app/app.service';
 import { Subject, BehaviorSubject, Observable } from 'rxjs';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { map, tap, scan, mergeMap, throttleTime } from 'rxjs/operators';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
@@ -16,7 +17,7 @@ export class MoviesListComponent {
   loadingNextBatch = false;
   offset = new BehaviorSubject(null);
   infinite: Observable<any[]>;
-  constructor(private mainService: MainService) {
+  constructor(private mainService: MainService, private route: ActivatedRoute, private router: Router) {
     const batchMap = this.offset.pipe(
       throttleTime(500),
       mergeMap(n => this.getBatch(n)),
@@ -24,7 +25,7 @@ export class MoviesListComponent {
         return { ...acc, ...batch };
       }, {})
     );
-    this.infinite = batchMap.pipe(map((v) => {this.loadingNextBatch = false; return Object.values(v); }));
+    this.infinite = batchMap.pipe(map((v) => { this.loadingNextBatch = false; return Object.values(v); }));
   }
 
   movieRequestTemplate() {
@@ -68,5 +69,11 @@ export class MoviesListComponent {
 
   trackByIdx(i) {
     return i;
+  }
+
+  showMovieDetails(event, movieDetails) {
+    if (event.srcElement.className.indexOf('openMovie') > -1) {
+      this.router.navigate(['/movie', movieDetails._id]);
+    }
   }
 }

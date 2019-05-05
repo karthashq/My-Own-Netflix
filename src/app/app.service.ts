@@ -26,4 +26,14 @@ export class MainService {
         const url = `${CommonConstants.getMovieURL}`;
         return this.http.post(url, movieRequestTemplate, this.httpOptions);
     }
+
+    getMovieComments(movieId) {
+        const url = `${CommonConstants.getCommentsforMovie}/${movieId}`;
+        return this.http.get(url, this.httpOptions);
+    }
+
+    getDetailsforMovieId(movieId) {
+        const url = `${CommonConstants.getDetailsforMovieId}/${movieId}`;
+        return this.http.get(url, this.httpOptions);
+    }
 }
