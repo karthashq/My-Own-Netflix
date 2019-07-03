@@ -41,7 +41,7 @@ moviesDAO.getMovie = async (id) =>{
 
 // Uses the youtube API to get the first matching video search results for the passed query
 moviesDAO.getYoutubeId = async (query) =>{
-  let APIKey = "AIzaSyCCOR6L4edVNgZTbpxMmRWwom2_vY0hfzc";
+  let APIKey = process.env.YOUTUBE_API_KEY;
   query = encodeURIComponent(query);
   let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${query}&fields=items&key=${APIKey}`;
   let response = await axios.get(url);
