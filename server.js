@@ -3,7 +3,7 @@ let cors = require("cors");
 let bodyParser = require('body-parser');
 let moviesRoute = require('./Service/routes/movies.route');
 let app = express();
-let port = process.env.PORT || 5000;
+let port = process.env.PORT;
 
 // This code allows us to allow access to our APIs from all domains
 // app.use("/*", (req, res, next) =>{

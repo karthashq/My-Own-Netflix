@@ -40,3 +40,19 @@ h2{
 #trailer{
     text-align: center;
 }
+
+#trailer #iframeDiv{
+    transition: width 2s ease-in-out,height 2s ease-in-out; 
+    width:400px;
+    display: inline-block;
+    height:300px;
+    padding:0;
+    margin:0;
+}
+
+#trailer #iframeDiv:hover{
+    z-index:99;
+    width: 60vw;
+    transform : translate(30,30);
+    height: 40vw;
+}

@@ -2,8 +2,8 @@ let mongodb = require("mongodb");
 let axios = require("axios");
 // let mongoConnection = await require("../mongoClient");
 let moviesDAO = {};
-let conectionURI = "mongodb://m220student:m220password@mflix-shard-00-00-kdqfd.mongodb.net:27017,mflix-shard-00-01-kdqfd.mongodb.net:27017,mflix-shard-00-02-kdqfd.mongodb.net:27017/test?ssl=true&replicaSet=mflix-shard-0&authSource=admin&retryWrites=true";
-
+// let conectionURI = "mongodb://m220student:m220password@mflix-shard-00-00-kdqfd.mongodb.net:27017,mflix-shard-00-01-kdqfd.mongodb.net:27017,mflix-shard-00-02-kdqfd.mongodb.net:27017/test?ssl=true&replicaSet=mflix-shard-0&authSource=admin&retryWrites=true";
+let conectionURI = process.env.conectionURI;
 let connection
 let moviesCollection
 let mongoClient = mongodb.MongoClient;
@@ -41,7 +41,7 @@ moviesDAO.getMovie = async (id) =>{
 
 // Uses the youtube API to get the first matching video search results for the passed query
 moviesDAO.getYoutubeId = async (query) =>{
-  let APIKey = "AIzaSyDPeVw08SV32ID6YuaxxVnYzevvDrIadiM";
+  let APIKey = "AIzaSyCCOR6L4edVNgZTbpxMmRWwom2_vY0hfzc";
   query = encodeURIComponent(query);
   let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${query}&fields=items&key=${APIKey}`;
   let response = await axios.get(url);

@@ -33,13 +33,15 @@
                 </div>
             </section>
         </div>
-        <div class="col-md-4 col-sm-12 col-xl-5">Similar Movies, feature coming soon</div>
+        <div class="col-md-4 col-sm-12 col-xl-5"><div>Similar Movies, feature coming soon</div></div>
     </div>
     <div id="trailer">
-        <iframe style="display: inline-block" style="min-width:400px;min-height:300px;" [src]="trailerLink"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
+        <div id="iframeDiv">
+            <iframe style="display: inline-block" width="100%" height="100%" [src]="trailerLink"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 </div>
 

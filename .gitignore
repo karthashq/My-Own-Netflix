@@ -3,3 +3,4 @@ My Own Netflix - Shortcut.lnk
 node_modules/
 dist/
 .vscode/launch.json
+.env

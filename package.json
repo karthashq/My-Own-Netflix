@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
+    "buildLocalUI": "ng build --output-path dist --watch",
     "start": "node server",
-    "start local": "ng build",
+    "startLocal": "env-cmd -f ./.env nodemon server.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -25,7 +26,7 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
@@ -54,6 +55,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.1"
+    "typescript": "~3.1.1",
+    "env-cmd": "^9.0.3"
   }
 }
