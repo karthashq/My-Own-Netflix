@@ -1,11 +1,6 @@
 Features to be Done
 ----------------------------
 
-0. Structurize the Back End
-
-0.1 Use Angular Material where ever possible
-
-0.2 Start using Observables were ever needed
 
 1. Movie Details page
 	* Actors
